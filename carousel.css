@@ -1,0 +1,33 @@
+@keyframes fadeOut {
+  from {
+    opacity: 100;
+  }
+  to {
+    background-color: 0;
+  }
+}
+.fadeOut {
+  animation-name: fadeOut;
+  animation-duration: 1s;
+  animation-fill-mode: reverse;
+  opacity: 0;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    background-color: 100;
+  }
+}
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: reverse;
+}
+.invisible {
+  opacity: 0;
+}
+.fifty {
+  opacity: 0.5;
+}
