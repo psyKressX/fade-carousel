@@ -7,6 +7,7 @@ export default function Carousel(props) {
   const { children, divStyle, delay } = props;
 
   const [imgIndex, setImgIndex] = useState(0);
+  const [fade, setFade] = useState(0);
   const [init, setInit] = useState(true);
 
   //handles image changing by going threw ImgIndex array after
@@ -17,26 +18,26 @@ export default function Carousel(props) {
     }
   }, [init]);
 
-  const previous = () => {
-    clear();
-    if (imgIndex === 0) {
-      setImgIndex(children.length - 1);
-    } else {
-      setImgIndex((i) => i - 1);
-    }
+  const getNext = (index, length) => {
+    return (index + 1) % length;
   };
-
+  const getPrev = (index, length) => {
+    return (((index - 1) % length) + length) % length;
+  };
+  const previous = useCallback(() => {
+    clear();
+    setFade(imgIndex);
+    setImgIndex(getPrev(imgIndex, children.length));
+  }, [clear, children.length, imgIndex]);
   const next = useCallback(() => {
     clear();
-    if (imgIndex < children.length - 1) {
-      setImgIndex((i) => i + 1);
-    } else {
-      setImgIndex(0);
-    }
+    setFade(imgIndex);
+    setImgIndex(getNext(imgIndex, children.length));
   }, [clear, children.length, imgIndex]);
 
   const select = (index) => {
     clear();
+    setFade(imgIndex);
     setImgIndex(index);
   };
 
@@ -45,21 +46,9 @@ export default function Carousel(props) {
   useEffect(() => {
     let fader;
     if (children.length > 1) {
-      if (!init) {
-        fader = setTimeout(() => {
-          let index = imgIndex;
-          if (index < children.length - 1) {
-            index++;
-            setImgIndex(index);
-          } else {
-            setImgIndex(0);
-          }
-        }, delay);
-      } else {
-        fader = setTimeout(() => {
-          next();
-        }, delay);
-      }
+      fader = setTimeout(() => {
+        next();
+      }, delay);
       return () => {
         clearTimeout(fader);
       };
@@ -92,11 +81,7 @@ export default function Carousel(props) {
                 ? "invisible"
                 : imgIndex === index
                 ? "fadeIn"
-                : // : index >= (imgIndex + 1) % children.length
-                // ? "invisible"
-                index ===
-                  (((imgIndex - 1) % children.length) + children.length) %
-                    children.length
+                : index === fade
                 ? "fadeOut"
                 : "invisible"
             }
@@ -129,7 +114,7 @@ export default function Carousel(props) {
                   pointerEvents: "all",
                 }}
                 size={"1.9em"}
-                onClick={previous}
+                onClick={() => previous()}
               />
               <HiOutlineChevronRight
                 style={{
@@ -138,7 +123,7 @@ export default function Carousel(props) {
                   pointerEvents: "all",
                 }}
                 size={"1.9em"}
-                onClick={next}
+                onClick={() => next()}
               />
             </div>
             <div
