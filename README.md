@@ -4,7 +4,7 @@ Malleable fader Carousel, pass children inside as shown in example below, set th
 
 # Installation
 
-`npm i fader-carousel`
+`npm i fade-carousel`
 
 Then...
 

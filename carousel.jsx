@@ -92,7 +92,13 @@ export default function Carousel(props) {
                 ? "invisible"
                 : imgIndex === index
                 ? "fadeIn"
-                : "fadeOut"
+                : // : index >= (imgIndex + 1) % children.length
+                // ? "invisible"
+                index ===
+                  (((imgIndex - 1) % children.length) + children.length) %
+                    children.length
+                ? "fadeOut"
+                : "invisible"
             }
           >
             {Child}
