@@ -154,7 +154,7 @@ Carousel.defaultProps = {
     width: "100%",
   },
   delay: 8000,
-  mode: "slide",
+  mode: "fade",
   children: [
     <h1 style={{ margin: "auto" }}>
       Add Children elements inside Carousel component
