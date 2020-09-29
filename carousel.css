@@ -1,9 +1,9 @@
 @keyframes fadeOut {
   from {
-    opacity: 100;
+    opacity: 1;
   }
   to {
-    background-color: 0;
+    opacity: 0;
   }
 }
 .fadeOut.fade {
@@ -17,7 +17,7 @@
     opacity: 0;
   }
   to {
-    background-color: 100;
+    opacity: 1;
   }
 }
 .fadeIn.fade {
