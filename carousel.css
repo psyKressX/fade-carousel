@@ -6,7 +6,7 @@
     opacity: 0;
   }
 }
-.fadeOut.fade {
+.fadeOut.fadexxx {
   animation-name: fadeOut;
   animation-duration: 1s;
   animation-fill-mode: reverse;
@@ -20,7 +20,7 @@
     opacity: 1;
   }
 }
-.fadeIn.fade {
+.fadeIn.fadexxx {
   animation-name: fadeIn;
   animation-duration: 1s;
   animation-fill-mode: reverse;
@@ -48,11 +48,11 @@
     left: 100%;
   }
 }
-.fadeIn.slide {
+.fadeIn.slidexxx {
   animation-name: slideIn;
   animation-duration: 1s;
 }
-.fadeOut.slide {
+.fadeOut.slidexxx {
   animation-name: slideOut;
   animation-duration: 1s;
   right: 100%;

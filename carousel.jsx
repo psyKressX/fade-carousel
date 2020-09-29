@@ -78,9 +78,9 @@ export default function Carousel(props) {
               init && index === 0
                 ? ""
                 : imgIndex === index
-                ? "fadeIn " + mode
+                ? "fadeIn " + mode + "xxx"
                 : index === fade
-                ? "fadeOut " + mode
+                ? "fadeOut " + mode + "xxx"
                 : "invisible"
             }
           >
