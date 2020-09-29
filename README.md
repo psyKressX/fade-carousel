@@ -1,6 +1,6 @@
 # what is this?
 
-Malleable fader Carousel, pass children inside as shown in example below, set the delay prop (`default to 8000ms`) to set timeout delay and use the divStyle prop to shape carousel.
+Malleable fader Carousel, pass children inside as shown in example below, set the delay prop (`default to 8000ms`) to set timeout delay, use the divStyle prop to shape carousel, as of version 1.1.0 there are 2 mode options that can be passed through the `mode` prop, `"fade"` or `"slide"`, default to fade, slide option shown in example.
 
 # Installation
 
@@ -23,12 +23,13 @@ return (
 
 ## Options
 
-2 props with defaults, defaults for wide full screen carousel
+3 props with defaults, defaults for wide full screen carousel
 
 | Prop     | Input                 | Default                             |
 | -------- | --------------------- | ----------------------------------- |
 | divStyle | Style Object          | `{ height: '800px', width: '100%'}` |
 | delay    | integer, milliseconds | `8000`                              |
+| mode     | string                | `fade`                              |
 
 ## Notes on child positioning
 
@@ -61,7 +62,7 @@ function App() {
 
   return (
     <div className="App">
-      <Carousel divStyle={divStyle}, delay={6000} >
+      <Carousel divStyle={divStyle} delay={6000} mode={"slide"} >
         {urls.map((url, index) => (
           <div key={index} style={imageStyle}>
             <img

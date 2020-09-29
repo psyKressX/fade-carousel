@@ -4,7 +4,7 @@ import { BsDot } from "react-icons/bs";
 import "./carousel.css";
 
 export default function Carousel(props) {
-  const { children, divStyle, delay } = props;
+  const { children, divStyle, delay, mode } = props;
 
   const [imgIndex, setImgIndex] = useState(0);
   const [fade, setFade] = useState(0);
@@ -77,12 +77,10 @@ export default function Carousel(props) {
             className={
               init && index === 0
                 ? ""
-                : init && index !== 0
-                ? "invisible"
                 : imgIndex === index
-                ? "fadeIn"
+                ? "fadeIn " + mode
                 : index === fade
-                ? "fadeOut"
+                ? "fadeOut " + mode
                 : "invisible"
             }
           >
@@ -156,6 +154,7 @@ Carousel.defaultProps = {
     width: "100%",
   },
   delay: 8000,
+  mode: "slide",
   children: [
     <h1 style={{ margin: "auto" }}>
       Add Children elements inside Carousel component

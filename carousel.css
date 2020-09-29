@@ -6,7 +6,7 @@
     background-color: 0;
   }
 }
-.fadeOut {
+.fadeOut.fade {
   animation-name: fadeOut;
   animation-duration: 1s;
   animation-fill-mode: reverse;
@@ -20,7 +20,7 @@
     background-color: 100;
   }
 }
-.fadeIn {
+.fadeIn.fade {
   animation-name: fadeIn;
   animation-duration: 1s;
   animation-fill-mode: reverse;
@@ -30,4 +30,30 @@
 }
 .fifty {
   opacity: 0.5;
+}
+
+@keyframes slideIn {
+  from {
+    right: 100%;
+  }
+  to {
+    right: 0%;
+  }
+}
+@keyframes slideOut {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 100%;
+  }
+}
+.fadeIn.slide {
+  animation-name: slideIn;
+  animation-duration: 1s;
+}
+.fadeOut.slide {
+  animation-name: slideOut;
+  animation-duration: 1s;
+  right: 100%;
 }
